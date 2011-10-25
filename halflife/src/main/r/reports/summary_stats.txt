@@ -1,0 +1,33 @@
+[1] "Protein.length..amino.acids."
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   44.0   257.0   434.0   629.2   758.0 35210.0 
+[1] "Protein.molecular.weight..kDa."
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   5.03   28.80   48.68   70.23   85.16 3906.00 
+[1] "Protein.copy.number.experiment..molecules.cell."
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+      43     4011    15540   114600    61750 16220000 
+[1] "Protein.copy.number.replicate..molecules.cell."
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+       3     3052    13810   121200    60740 18940000      118 
+[1] "Protein.copy.number.average..molecules.cell."
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+      39     3213    13630   114000    59100 15520000 
+[1] "mRNA.copy.number.experiment..molecules.cell."
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.94    9.29   17.36   42.18   35.79 3606.00  666.00 
+[1] "mRNA.copy.number.replicate..molecules.cell."
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+   0.89    9.49   17.55   39.55   34.12 3058.00  666.00 
+[1] "mRNA.copy.number.average..molecules.cell."
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max.     NA's 
+   1.030    9.438   17.420   40.430   35.180 3230.000  666.000 
+[1] "Protein.half.life.experiment..h."
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+    0.45    24.08    46.16    79.49    80.86 16840.00 
+[1] "Protein.half.life.replicate..h."
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max.      NA's 
+     0.44     24.86     49.93    153.60     94.84 148000.00    808.00 
+[1] "Protein.half.life.average..h."
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.50   24.18   47.73   81.97   87.54 5764.00 
