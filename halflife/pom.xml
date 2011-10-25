@@ -1,0 +1,253 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.compomics.suppl</groupId>
+    <artifactId>halflife</artifactId>
+    <packaging>jar</packaging>
+    <version>${version.number}</version>
+    <name>halflife</name>
+
+    <!-- Set the version number for the whole project -->
+    <properties>
+        <version.number>1.0</version.number>
+        <logging.file.path.name>suppl_halflife_log4j.log</logging.file.path.name>
+        <logging.file.max.size>5000KB</logging.file.max.size>
+        <logging.pattern>[%d{dd-MMM-yyyy HH:mm:ss} - %p] "%m" (%C:%L)%n</logging.pattern>
+    </properties>
+
+    <!-- Licence -->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <!-- Developers -->
+    <developers>
+        <developer>
+            <name>Kenny Helsens</name>
+            <id>kenny</id>
+            <email>kenny.helsens@ugent.be</email>
+            <organization>Computational Omics and Systems Biology Group, VIB Department of Medical Protein Research,
+                UGent, Belgium
+            </organization>
+        </developer>
+    </developers>
+
+    <!-- Build -->
+    <build>
+        <!-- Copy the resources required during building -->
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <includes>
+                    <include>test.txt</include>
+                </includes>
+            </resource>
+        </resources>
+
+
+        <!-- Plugins -->
+        <plugins>
+            <!-- Compiler plugin -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <showDeprecation>true</showDeprecation>
+                    <debug>true</debug>
+                </configuration>
+            </plugin>
+
+            <!-- Jar plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>
+                                com.compomics.pr1011.protease_simulation.ProteaseSimulation
+                            </mainClass>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib</classpathPrefix>
+                        </manifest>
+                    </archive>
+                    <outputDirectory>${project.build.directory}/khprojects-${project.version}</outputDirectory>
+                </configuration>
+            </plugin>
+
+            <!-- Dependency plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/khprojects-${project.version}/lib
+                            </outputDirectory>
+                            <overWriteReleases>true</overWriteReleases>
+                            <overWriteSnapshots>true</overWriteSnapshots>
+                            <excludeTransitive>false</excludeTransitive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <!-- Resources plugin - classes -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-compile-resources</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <overwrite>true</overwrite>
+                            <outputDirectory>target/classes</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Resources plugin -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <id>copy-package-resources</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/khprojects-${project.version}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Repositores -->
+    <!-- Repositores -->
+    <repositories>
+        <!-- UGent Genesis Maven 1 repository -->
+        <repository>
+            <id>genesis-maven-repository</id>
+            <name>Genesis repository</name>
+            <url>http://genesis.UGent.be/maven</url>
+            <layout>legacy</layout>
+        </repository>
+
+        <!-- UGent Genesis Maven 2 repository -->
+        <repository>
+            <id>genesis-maven2-repository</id>
+            <name>Genesis maven2 repository</name>
+            <url>http://genesis.UGent.be/maven2</url>
+            <layout>default</layout>
+        </repository>
+
+
+        <!-- UGent Genesis Maven 2 repository -->
+        <repository>
+            <id>ibiblio-maven2-repository</id>
+            <name>Ibiblio maven2 repository (mirror)</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/</url>
+            <layout>default</layout>
+        </repository>
+
+
+        <repository>
+            <id>ebi-repo</id>
+            <name>ebi-repo</name>
+            <url>http://www.ebi.ac.uk/~maven/m2repo</url>
+        </repository>
+
+        <repository>
+            <id>org.samba.jcifs</id>
+            <name>org.samba.jcifs</name>
+            <url>http://mirrors.ibiblio.org/pub/mirrors/maven/</url>
+            <!--<layout>legacy</layout>-->
+        </repository>
+
+
+        <repository>
+            <id>chibi-rosuda</id>
+            <name>chibi-rosuda</name>
+            <url>http://www.chibi.ubc.ca/maven2/</url>
+        </repository>
+
+    </repositories>
+
+    <!-- Dependencies -->
+    <dependencies>
+
+
+        <!-- This project depends on the ms-lims project.
+        -->
+        <dependency>
+            <groupId>com.compomics</groupId>
+            <artifactId>dbtoolkit</artifactId>
+            <version>4.0</version>
+        </dependency>
+
+
+        <!-- This project depends on the ms-lims project.
+          -->
+        <dependency>
+            <groupId>com.compomics</groupId>
+            <artifactId>utilities</artifactId>
+            <version>3.1.21</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>r08</version>
+        </dependency>
+
+
+    </dependencies>
+
+    <!-- The deployment maven2 repository-->
+    <distributionManagement>
+        <repository>
+            <id>genesis-maven2-repo</id>
+            <name>Genesis Maven Repository</name>
+            <url>scp://genesis.ugent.be/home/maven/public_html/maven2</url>
+        </repository>
+    </distributionManagement>
+
+</project>
